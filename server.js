@@ -4,34 +4,26 @@ const path = require('path');
 const fs = require('fs');
 const uuid = require('./helpers/uuid');
 const db = require('./db/db.json')
-
-// const PORT = 3001;
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-//index - static
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-//notes - static in public folder
 app.get('/notes', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/notes.html'))
 });
-
 
 app.get('/api/notes', (req, res) => {
     const notes = fs.readFileSync('./db/db.json', 'utf-8');
     res.json(JSON.parse(notes));    
 });
 
-
 app.post('/api/notes', (req, res) => {
-
-    console.log(req.body)
     
     const { text, title } = req.body;
 
@@ -39,7 +31,7 @@ app.post('/api/notes', (req, res) => {
         const newNote = {
             title,
             text,
-            note_ID: uuid(),
+            id: uuid(),
         }
 
         const savedNotes = fs.readFileSync('./db/db.json', 'utf-8');
@@ -48,13 +40,7 @@ app.post('/api/notes', (req, res) => {
         parsedNotes.push(newNote);
         const noteList = JSON.stringify(parsedNotes, null, 2);
 
-        fs.writeFile(`./db/db.json`, noteList, (err) =>
-        err
-          ? console.error(err)
-          : console.log(
-              `New note ${newNote.title} has been written to JSON file`
-            )
-      );
+        fs.writeFile(`./db/db.json`, noteList, (err) => console.error(err));
 
         const response = {
             status: 'success',
@@ -66,6 +52,14 @@ app.post('/api/notes', (req, res) => {
         res.status(500).json(`Note didn't take!`)
     };
 
+});
+
+app.delete(`/api/notes/:id`, (req, res) => {
+    const { id } = req.params;
+
+
+    console.info('deleted that pesky note!');               // we can pop off db.json and re-write file!
+    res.status(202);
 });
 
 
