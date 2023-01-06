@@ -2,6 +2,8 @@ db.json will be the storage of notes, this file needs to be read with the fs.rea
 
 the file must be read, stringified, and parsed  -  like the activity we did earlier..20
 
+The __dirname in a node script returns the path of the folder where the current JavaScript file resides. __filename and __dirname are used to get the filename and directory name of the currently executing file.
+
 -----------------------------------------------------------------------------------------------------------
 
 FROM EXPRESS DOCUMENTATION
