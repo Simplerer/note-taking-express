@@ -24,7 +24,8 @@ app.get('/notes', (req, res) => {
 
 
 app.get('/api/notes', (req, res) => {
-    res.json(db);    
+    const notes = fs.readFileSync('./db/db.json', 'utf-8');
+    res.json(JSON.parse(notes));    
 });
 
 
@@ -63,7 +64,7 @@ app.post('/api/notes', (req, res) => {
         res.json(response);
     } else {
         res.status(500).json(`Note didn't take!`)
-    }
+    };
 
 });
 
