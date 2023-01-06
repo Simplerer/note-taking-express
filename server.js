@@ -27,15 +27,11 @@ app.get('/api/notes', (req, res) => {
     res.json(db);    
 });
 
+
 app.post('/api/notes', (req, res) => {
     
     console.log(`${req.method} request to add note recieved`)
     console.info(`${req.method} request to add note recieved`)
-    
-})
-
-app.post('/api/reviews', (req, res) => {
-    
 
     const { text, title } = req.body;
 
@@ -43,8 +39,20 @@ app.post('/api/reviews', (req, res) => {
         const newNote = {
             text,
             title,
-
+            note_ID: uuid(),
         }
+
+        const noteObj = JSON.stringify(newNote);
+
+
+        const response = {
+            status: 'success',
+            body: newNote,
+        };
+
+        res.json(response);
+    } else {
+        res.status(500).json(`Note didn't take!`)
     }
 
 });
