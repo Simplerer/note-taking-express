@@ -2,5 +2,20 @@
     {
         "title":"Test Title",
         "text":"Test text"
+    },
+    {
+        "title":"yupper",
+        "text":"Puppers"
     }
+]
+[
+    {
+        "title": "Test Title",
+        "text": "Test text"
+    },
+    {
+        "title": "yupper",
+        "text": "Puppers"
+    },
+    "[\n    {\n        \"title\":\"Test Title\",\n        \"text\":\"Test text\"\n    },\n    {\n        \"title\":\"yupper\",\n        \"text\":\"Puppers\"\n    }\n]\n"
 ]

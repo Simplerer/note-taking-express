@@ -30,9 +30,6 @@ app.get('/api/notes', (req, res) => {
 
 app.post('/api/notes', (req, res) => {
     
-    console.log(`${req.method} request to add note recieved`)
-    console.info(`${req.method} request to add note recieved`)
-
     const { text, title } = req.body;
 
     if (text && title) {
@@ -42,8 +39,19 @@ app.post('/api/notes', (req, res) => {
             note_ID: uuid(),
         }
 
-        const noteObj = JSON.stringify(newNote);
+        const savedNotes = fs.readFileSync('./db/db.json', 'utf-8');
+        const parsedNotes = JSON.parse(savedNotes);
 
+        parsedNotes.push(savedNotes);
+        const noteList = JSON.stringify(parsedNotes, null, 4);
+
+        fs.appendFileSync(`./db/db.json`, noteList, (err) =>
+        err
+          ? console.error(err)
+          : console.log(
+              `New note ${newNote.title} has been written to JSON file`
+            )
+      );
 
         const response = {
             status: 'success',
