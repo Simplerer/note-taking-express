@@ -29,23 +29,25 @@ app.get('/api/notes', (req, res) => {
 
 
 app.post('/api/notes', (req, res) => {
+
+    console.log(req.body)
     
     const { text, title } = req.body;
 
-    if (text && title) {
+    if (title && text) {
         const newNote = {
-            text,
             title,
+            text,
             note_ID: uuid(),
         }
 
         const savedNotes = fs.readFileSync('./db/db.json', 'utf-8');
         const parsedNotes = JSON.parse(savedNotes);
 
-        parsedNotes.push(savedNotes);
-        const noteList = JSON.stringify(parsedNotes, null, 4);
+        parsedNotes.push(newNote);
+        const noteList = JSON.stringify(parsedNotes, null, 2);
 
-        fs.appendFileSync(`./db/db.json`, noteList, (err) =>
+        fs.writeFile(`./db/db.json`, noteList, (err) =>
         err
           ? console.error(err)
           : console.log(

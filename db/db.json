@@ -1,21 +1,15 @@
 [
-    {
-        "title":"Test Title",
-        "text":"Test text"
-    },
-    {
-        "title":"yupper",
-        "text":"Puppers"
-    }
-]
-[
-    {
-        "title": "Test Title",
-        "text": "Test text"
-    },
-    {
-        "title": "yupper",
-        "text": "Puppers"
-    },
-    "[\n    {\n        \"title\":\"Test Title\",\n        \"text\":\"Test text\"\n    },\n    {\n        \"title\":\"yupper\",\n        \"text\":\"Puppers\"\n    }\n]\n"
+  {
+    "title": "Test Title",
+    "text": "Test text"
+  },
+  {
+    "title": "yupper",
+    "text": "Puppers"
+  },
+  {
+    "title": "yup here I am",
+    "text": "got it babay",
+    "note_ID": "0a98"
+  }
 ]
