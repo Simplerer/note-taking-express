@@ -1,1 +1,17 @@
-[]
+[
+  {
+    "title": "Ham Croissant",
+    "text": "Croissant, Ham, Mustard, Onion\nToasted",
+    "id": "fd9f"
+  },
+  {
+    "title": "Cafe au Latte",
+    "text": "coffee and milk",
+    "id": "a8f1"
+  },
+  {
+    "title": "Turkey Club",
+    "text": "With lots of love, keep away the cranberry",
+    "id": "a249"
+  }
+]
