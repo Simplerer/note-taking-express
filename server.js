@@ -60,15 +60,21 @@ app.delete(`/api/notes/:id`, (req, res) => {
     const savedNotes = fs.readFileSync('./db/db.json', 'utf-8');
     const parsedNotes = JSON.parse(savedNotes);
 
+    console.log(parsedNotes);
+
     const oneLessNote = parsedNotes.filter((notes) => {
+        console.log(id);
+        console.log(notes.id);
        if (notes.id !== id) {
-        return;
+        return notes.id;
        };
     });
+
     
     const noteList = JSON.stringify(oneLessNote, null, 2);
     fs.writeFile(`./db/db.json`, noteList, (err) => err ? console.error(err) : console.log('deleted that pesky note!'));
     
+    res.send();
     res.status(202);
 });
 
